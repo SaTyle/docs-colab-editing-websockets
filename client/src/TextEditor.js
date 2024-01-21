@@ -23,7 +23,7 @@ export default function TextEditor() {
   const [quill, setQuill] = useState()
 
   useEffect(() => {
-    const s = io("http://localhost:3001")
+    const s = io("https://dashboard.render.com/web/srv-cmmimq8l5elc73cccnig/deploys/dep-cmmj7d021fec73cm7eb0")
     setSocket(s)
 
     return () => {
