@@ -1,16 +1,32 @@
 const mongoose = require("mongoose")
 const Document = require("./Document")
 
-mongoose.connect("mongodb+srv://ajit:ajit-123@cluster0.pji9qqc.mongodb.net/word-edit-websockets", {
+// require("dotenv");
+// mongoose.connect("mongodb+srv://ajit:ajit-123@cluster0.pji9qqc.mongodb.net/word-edit-websockets", {
+// // mongoose.connect("mongodb+srv://ajit:ajit-123@ac-mkfq4cb-shard-00-02.pji9qqc.mongodb.net,ac-mkfq4cb-shard-00-00.pji9qqc.mongodb.net,ac-mkfq4cb-shard-00-01.pji9qqc.mongodb.net/word-edit-websockets?authSource=admin&replicaSet=atlas-j706ye-shard-0&ssl=true", {
+
+//     useNewUrlParser: true,
+//   useUnifiedTopology: true,
+//   useFindAndModify: false,
+//   useCreateIndex: true,
+// })
+
+require("dotenv").config(); // Load environment variables from .env file
+
+mongoose.connect(process.env.MONGO_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
   useCreateIndex: true,
-})
+});
+
+
+
 
 const io = require("socket.io")(3001, {
   cors: {
     origin: "http://localhost:3000",
+    // origin: "http://docs-colab-editing-websockets.vercel.app/",
     methods: ["GET", "POST"],
   },
 })
