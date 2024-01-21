@@ -23,7 +23,8 @@ const server = app.listen(3001, () => {
 
 const io = require("socket.io")(server, {
   cors: {
-    origin: "http://localhost:3000",
+    // origin: "http://localhost:3000",
+    origin: "https://docs-colab-websockets-frontend.vercel.app/",
     methods: ["GET", "POST"],
   },
 });
