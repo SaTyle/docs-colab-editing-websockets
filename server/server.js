@@ -4,12 +4,16 @@ const Document = require("./Document");
 
 require("dotenv").config();
 
-mongoose.connect(process.env.MONGO_URL, {
+
+ mongoose.connect(process.env.MONGO_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  useFindAndModify: false,
-  useCreateIndex: true,
+
 });
+
+
+
+
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -32,7 +36,7 @@ const server = app.listen(PORT, () => {
 
 const io = require("socket.io")(server, {
   cors: {
-    origin: ["http://localhost:3000", "https://docs-colab-websockets-frontend.vercel.app"],
+    origin: "https://collaborative-doc-editor.vercel.app/documents/59f7e4ff-2b61-4eca-bfb7-bc3ed2d2ec12",
     methods: ["GET", "POST"],
   },
 });
